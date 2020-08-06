@@ -327,7 +327,7 @@ export default {
   computed: {
     parsedMode() {
       if (this.mode) {
-        if (!["international", "national"].includes(this.mode)) {
+        if (!["international", "national", "e164", "rfc3966", "significant"].includes(this.mode)) {
           console.error('Invalid value of prop "mode"');
         } else {
           return this.mode;
