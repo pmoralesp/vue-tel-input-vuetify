@@ -393,7 +393,7 @@ export default {
       return [...preferredCountries, ...this.filteredCountries];
     },
     phoneObject() {
-      const result = PhoneNumber(this.phone || "", this.activeCountry.iso2).toJSON();
+      const result = PhoneNumber(this.phone || '', this.activeCountry.iso2).toJSON();
       Object.assign(result, {
         isValid: result.valid,
         country: this.activeCountry,
