@@ -59,6 +59,7 @@ export const defaultOptions = {
   maxLen: 25,
   validCharactersOnly: false,
   dynamicPlaceholder: false,
+  appendOuterIcon: '',
 };
 
 export default {

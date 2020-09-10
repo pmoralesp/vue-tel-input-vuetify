@@ -63,6 +63,7 @@
       :id="inputId"
       :maxlength="maxLen"
       :tabindex="inputOptions && inputOptions.tabindex ? inputOptions.tabindex : 0"
+      :append-outer-icon="appendOuterIcon"
       @input="onInput"
       @blur="onBlur"
       @focus="onFocus"
@@ -73,6 +74,7 @@
       @keydown="onKeyDown"
       @keyup.enter="onEnter"
       @keyup.space="onSpace"
+      @click:append-outer="onClickAppendOuterIcon"
     >
       <template #append>
         <slot name="append"/>
@@ -344,6 +346,10 @@ export default {
       type: Number,
       default: () => getDefault('maxLen'),
     },
+    appendOuterIcon: {
+      type: String,
+      default: () => getDefault('appendOuterIcon'),
+    },
   },
   data() {
     return {
@@ -612,6 +618,9 @@ export default {
     },
     onClick(event) {
       this.$emit('click', event);
+    },
+    onClickAppendOuterIcon(event) {
+      this.$emit('click:append-outer', event);
     },
     onChange(value) {
       this.$emit('change', value);
