@@ -361,7 +361,7 @@ export default {
   computed: {
     parsedMode() {
       if (this.mode) {
-        if (!['international', 'national'].includes(this.mode)) {
+        if (!['international', 'national', 'e164', 'rfc3966', 'significant'].includes(this.mode)) {
           console.error('Invalid value of prop "mode"');
         } else {
           return this.mode;
@@ -492,7 +492,7 @@ export default {
         if (this.phone && this.phone[0] === '+') {
           const activeCountry = PhoneNumber(this.phone).getRegionCode();
           if (activeCountry) {
-            this.choose(activeCountry);
+            this.choose(this.findCountry(activeCountry));
             resolve();
             return;
           }

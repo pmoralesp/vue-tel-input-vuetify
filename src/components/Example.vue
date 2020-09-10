@@ -3,11 +3,16 @@
     <v-row justify="center">
       <v-col cols="6">
         <vue-tel-input-vuetify
+          v-model="telefono"
           outlined
-          :preferred-countries="['id', 'gb', 'ua', 'us']"
           :valid-characters-only="true"
           select-label="Code"
           @input="onInput"
+          @country-changed="onChange"
+          mode="significant"
+          :prefix="'+' + phone.prefix"
+          :error="error"
+          :errorMessages="errorMsg"
         />
       </v-col>
     </v-row>
@@ -48,7 +53,12 @@ export default {
         number: '',
         valid: false,
         country: undefined,
+        prefix: '',
       },
+      error: false,
+      errorMsg: '',
+      telefono: '+56994162312',
+      // telefono: '+5723304056',
     };
   },
   methods: {
@@ -56,6 +66,16 @@ export default {
       this.phone.number = number.international;
       this.phone.valid = valid;
       this.phone.country = country && country.name;
+      this.error = !this.phone.valid;
+      if (this.error) {
+        this.errorMsg = 'Número no válido';
+      } else {
+        this.errorMsg = '';
+      }
+      console.log('Teléfono: ', this.telefono);
+    },
+    onChange(e) {
+      this.phone.prefix = e.dialCode;
     },
   },
 };
