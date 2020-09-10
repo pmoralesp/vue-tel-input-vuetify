@@ -9,6 +9,7 @@
         :disabled="disabled"
         :outlined="outlined"
         :dense="dense"
+        v-bind:class="{'hide-arrow': hideArrow}"
         item-text="name"
         item-value="dialCode"
         return-object
@@ -349,6 +350,10 @@ export default {
     appendOuterIcon: {
       type: String,
       default: () => getDefault('appendOuterIcon'),
+    },
+    hideArrow: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -743,6 +748,12 @@ export default {
 
   .country-code {
     width: 75px;
+    .v-select__selections {
+      justify-content: center
+    }
+    .hide-arrow .v-input__append-inner {
+      display: none
+    }
   }
 
   li.last-preferred {
@@ -761,6 +772,7 @@ export default {
       .v-select__selections {
         .vti__flag {
           margin-left: auto;
+          margin-right: 0px;
         }
       }
     }

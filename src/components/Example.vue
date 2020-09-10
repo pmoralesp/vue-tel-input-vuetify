@@ -10,6 +10,7 @@
           @input="onInput"
           @country-changed="onChange"
           mode="significant"
+          hideArrow
           :prefix="'+' + phone.prefix"
           :error="error"
           :errorMessages="errorMsg"
